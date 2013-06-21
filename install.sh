@@ -27,3 +27,6 @@ load $HOME/.config/fish $DOTDIR/fish
 load $HOME/.ackrc $DOTDIR/ackrc
 load $HOME/.gitconfig $DOTDIR/gitconfig
 
+echo "Creating default directories"
+mkdir -p $HOME/local/src
+mkdir -p $HOME/local/bin
