@@ -18,6 +18,8 @@ function load {
   ln -s $FROM $TO
 }
 
+load $HOME/.tmux.conf $DOTDIR/tmux.conf
+
 load $HOME/.vimrc $DOTDIR/vimrc
 load $HOME/.vim $DOTDIR/vim
 
