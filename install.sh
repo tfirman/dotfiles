@@ -1,30 +1,29 @@
 #!/bin/sh
 TS=$(date +%s)
+DOTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-#####################################
-#
-if [ -e $HOME/.vimrc ]; then
-  mv $HOME/.vimrc $HOME/.vimrc-old-$TS
-fi
-ln -s $HOME/.dotfiles/vimrc $HOME/.vimrc 
+function load {
+  TO=$1
+  FROM=$2
+  echo $TO
+  if [ -L $TO ]; then
+    echo "Removing stale link"
+    rm $TO
+  fi
+  if [ -e $TO ]; then
+    echo "Backing up: $TO"
+    mv $TO $TO.old.$TS
+  fi
+  echo "Updating $TO with $FROM"
+  ln -s $FROM $TO
+}
 
-if [ -e $HOME/.vim ]; then
-  mv $HOME/.vim $HOME/.vim-old-$TS
-fi
-ln -s $HOME/.dotfiles/vim $HOME/.vim 
+load $HOME/.vimrc $DOTDIR/vimrc
+load $HOME/.vim $DOTDIR/vim
 
-#####################################
-#
 mkdir -p $HOME/.config
-if [ -e $HOME/.config/fish ]; then
-  mv $HOME/.config/fish $HOME/.config/fish-old-$TS
-fi
-ln -s $HOME/.dotfiles/fish $HOME/.config/fish 
+load $HOME/.config/fish $DOTDIR/fish
 
-#####################################
-#
-if [ -e $HOME/.tmux.conf ]; then
-  mv $HOME/.tmux.conf $HOME/.tmux.conf-old-$TS
-fi
-ln -s $HOME/.dotfiles/tmux.conf $HOME/.tmux.conf 
+load $HOME/.ackrc $DOTDIR/ackrc
+load $HOME/.gitconfig $DOTDIR/gitconfig
 

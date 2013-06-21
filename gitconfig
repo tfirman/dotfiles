@@ -1,0 +1,9 @@
+[color]
+	ui = auto
+[user]
+	name = Carl Taylor
+	email = ctaylor@fulcrum.net
+[heroku]
+	account = ctaylor@fulcrum.net
+[push]
+	default = current

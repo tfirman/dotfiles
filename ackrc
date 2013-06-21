@@ -1,0 +1,13 @@
+--type-set
+haml=.haml
+--type-set
+coffee=.coffee
+--type-set
+sass=.scss
+--type-set
+feature=.feature
+--type-set
+handlebars=.handlebars,.hbs
+--ignore-dir=doc
+--ignore-dir=log
+--ignore-dir=.idea
