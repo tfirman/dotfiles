@@ -2,6 +2,8 @@ set shell=sh
 
 execute pathogen#infect()
 
+set backupdir=$HOME/local/tmp
+
 syntax on
 filetype plugin indent on
 

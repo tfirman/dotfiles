@@ -32,3 +32,4 @@ load $HOME/.gitconfig $DOTDIR/gitconfig
 echo "Creating default directories"
 mkdir -p $HOME/local/src
 mkdir -p $HOME/local/bin
+mkdir -p $HOME/local/tmp
