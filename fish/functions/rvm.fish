@@ -8,3 +8,5 @@ function rvm -d 'Ruby enVironment Manager'
   # clean up
   rm -f $env_file
 end
+
+alias z 'zeus'
