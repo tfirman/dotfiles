@@ -33,7 +33,6 @@ let g:unite_split_rule = 'botright'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 " Prompt choices.
-let g:unite_prompt = '❫ '
 let g:unite_prompt = '» '
 
 " Use ag for search
