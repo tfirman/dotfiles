@@ -1,0 +1,12 @@
+#!/bin/bash
+GIT_DIR=`git rev-parse --git-dir` &&
+(
+  if [ `basename $GIT_DIR` = ".git" ]; then
+    # handle normal git repos (with a .git dir)
+    cd $GIT_DIR/..
+  else
+    # handle bare git repos (the repo IS a xxx.git dir)
+    cd $GIT_DIR
+  fi
+  pwd
+)
