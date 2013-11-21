@@ -1,0 +1,4 @@
+fish/fish_history
+fish/generated_completions
+fish/fishd.*
+vim/.netrwhist

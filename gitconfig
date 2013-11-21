@@ -3,9 +3,15 @@
 [user]
 	name = Carl Taylor
 	email = ctaylor@fulcrum.net
+[rerere]
+  enabled = 1
+  autoupdate = 1
+[push]
+  default = matching
+[core]
+  editor = vim
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  excludesfile = ~/.gitignore
 [heroku]
 	account = ctaylor@fulcrum.net
-[push]
-	default = current
-[ssh]
-	key = /Users/ctaylor/.ssh/id_rsa.old
+
