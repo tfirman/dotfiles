@@ -3,6 +3,7 @@
 
 # Dotfiles bin
 set PATH (dirname (status -f))"/../bin" $PATH
+set PATH $HOME/local/bin $PATH
 
 # Homebrew bin
 set PATH /usr/local/sbin $PATH
@@ -18,6 +19,11 @@ if test -d $HOME/.rbenv
   set PATH $HOME/.rbenv/bin $PATH
   set PATH $HOME/.rbenv/shims $PATH
   set PATH ./bin $PATH
+end
+
+# Nimrod bin
+if test -d $HOME/local/nimrod
+  set PATH $HOME/local/nimrod/bin $PATH
 end
 
 ################################################################################
