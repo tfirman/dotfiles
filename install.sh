@@ -21,6 +21,7 @@ function load {
 echo "Creating default directories"
 mkdir -p $HOME/local/src
 mkdir -p $HOME/local/bin
+mkdir -p $HOME/local/inst
 mkdir -p $HOME/local/tmp
 mkdir -p $HOME/.config
 

@@ -22,8 +22,8 @@ if test -d $HOME/.rbenv
 end
 
 # Nimrod bin
-if test -d $HOME/local/nimrod
-  set PATH $HOME/local/nimrod/bin $PATH
+if test -d $HOME/local/inst/nimrod
+  set PATH $HOME/local/inst/nimrod/bin $PATH
 end
 
 ################################################################################
