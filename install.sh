@@ -24,6 +24,7 @@ mkdir -p $HOME/local/bin
 mkdir -p $HOME/local/tmp
 mkdir -p $HOME/.config
 
+load $HOME/local/bin/tmux-default-command.sh $DOTDIR/bin/tmux-default-command.sh
 load $HOME/.tmux.conf $DOTDIR/tmux.conf
 load $HOME/.vimrc $DOTDIR/vimrc
 load $HOME/.vim $DOTDIR/vim

@@ -1,5 +1,5 @@
 # Globals
-if test -x vim
+if type vim > /dev/null
   set -x EDITOR 'vim'
 end
 
@@ -7,7 +7,7 @@ end
 set PATH (dirname (status -f))"/../bin" $PATH
 
 # Ruby optimizations
-if test -x ruby
+if type ruby > /dev/null
   set -x RUBY_HEAP_MIN_SLOTS 800000
   set -x RUBY_HEAP_FREE_MIN 100000
   set -x RUBY_HEAP_SLOTS_INCREMENT 300000
@@ -16,7 +16,7 @@ if test -x ruby
 end
 
 # Rbenv
-if test -x rbenv
+if type rbenv > /dev/null
   set PATH $HOME/.rbenv/bin $PATH
   set PATH $HOME/.rbenv/shims $PATH
   rbenv rehash >/dev/null ^&1
