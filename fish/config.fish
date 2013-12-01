@@ -1,10 +1,38 @@
-# Globals
-if type vim > /dev/null
-  set -x EDITOR 'vim'
+################################################################################
+# PATHS
+
+# Dotfiles bin
+set PATH (dirname (status -f))"/../bin" $PATH
+set PATH $HOME/local/bin $PATH
+
+# Homebrew bin
+set PATH /usr/local/sbin $PATH
+set PATH /usr/local/bin $PATH
+
+# Haskell bin
+if test -d $HOME/.cabal/bin
+  set PATH $HOME/.cabal/bin $PATH
 end
 
-# Dotfiles bins
-set PATH (dirname (status -f))"/../bin" $PATH
+# Rbenv bin
+if test -d $HOME/.rbenv
+  set PATH $HOME/.rbenv/bin $PATH
+  set PATH $HOME/.rbenv/shims $PATH
+  set PATH ./bin $PATH
+end
+
+# Nimrod bin
+if test -d $HOME/local/nimrod
+  set PATH $HOME/local/nimrod/bin $PATH
+end
+
+################################################################################
+# Environment variables
+
+# Use vim as the default editor
+if type vim 1>/dev/null
+  set -x EDITOR 'vim'
+end
 
 # Ruby optimizations
 if type ruby > /dev/null
@@ -15,26 +43,12 @@ if type ruby > /dev/null
   set -x RUBY_GC_MALLOC_LIMIT 79000000
 end
 
-# Rbenv
-if type rbenv > /dev/null
-  set PATH $HOME/.rbenv/bin $PATH
-  set PATH $HOME/.rbenv/shims $PATH
-  rbenv rehash >/dev/null ^&1
-end
-
-# Homebrew
-set PATH /usr/local/sbin $PATH
-set PATH /usr/local/bin $PATH
-
-# Aliases
-alias z "zeus"
-alias b "bundle exec"
-
 # Scala sbt opts
 set -x SBT_OPTS "-Xms512M -Xmx2G -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 
-# Haskell bins
-if test -d $HOME/.cabal/bin
-  set PATH $HOME/.cabal/bin $PATH
-end
+################################################################################
+# Aliases
+
+alias z "zeus"
+alias b "bundle exec"
 

@@ -1,4 +1,4 @@
-fish/fish_history
+fish/fishd*
 fish/generated_completions
-fish/fishd.*
+fish/fish_history
 vim/.netrwhist

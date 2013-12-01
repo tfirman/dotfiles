@@ -31,4 +31,5 @@ load $HOME/.vim $DOTDIR/vim
 load $HOME/.config/fish $DOTDIR/fish
 load $HOME/.ackrc $DOTDIR/ackrc
 load $HOME/.gitconfig $DOTDIR/gitconfig
+load $HOME/.gitignore $DOTDIR/gitignore
 
