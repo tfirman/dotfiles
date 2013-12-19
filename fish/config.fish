@@ -26,6 +26,11 @@ if test -d $HOME/local/nimrod
   set PATH $HOME/local/nimrod/bin $PATH
 end
 
+# Babel bin
+if test -d $HOME/.babel/bin
+  set PATH $HOME/.babel/bin $PATH
+end
+
 ################################################################################
 # Environment variables
 
