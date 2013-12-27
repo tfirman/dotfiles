@@ -4,7 +4,7 @@ if [ -z $GIT_SSH_KEY ]; then GIT_SSH_KEY=$(git config ssh.key); fi
 if [ -z $GIT_SSH_KEY ]; then
   ssh_opts=""
 else
-  ssh_opts="-i ${$GIT_SSH_KEY}"
+  ssh_opts="-i $GIT_SSH_KEY"
 fi
  
-exec ssh $GIT_SSH_KEY "$@"
+exec ssh $ssh_opts "$@"
