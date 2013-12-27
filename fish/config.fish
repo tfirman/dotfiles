@@ -26,11 +26,11 @@ if test -d $HOME/local/inst/nimrod
   set PATH $HOME/local/inst/nimrod/bin $PATH
 end
 
-
-# Local Paths
-set -x C_INCLUDE_PATH $HOME/local/include
-set -x CPLUS_INCLUDE_PATH $HOME/local/include
-set -x LIBRARY_PATH $HOME/local/lib
+################################################################################
+# Make flags
+set CPPFLAGS '-I$HOME/local/include'
+set CFLAGS '-I$HOME/local/include'
+set LDFLAGS '-L$HOME/local/lib'
 
 ################################################################################
 # Environment variables
