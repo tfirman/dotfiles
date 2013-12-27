@@ -29,7 +29,7 @@ end
 ################################################################################
 # Environment variables
 
-set -x GIT_SSH=git-ssh
+set -x GIT_SSH git-ssh
 
 # Use vim as the default editor
 if type vim 1>/dev/null
