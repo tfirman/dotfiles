@@ -32,7 +32,15 @@ if test -d $HOME/.babel/bin
 end
 
 ################################################################################
+# Make flags
+set CPPFLAGS '-I$HOME/local/include'
+set CFLAGS '-I$HOME/local/include'
+set LDFLAGS '-L$HOME/local/lib'
+
+################################################################################
 # Environment variables
+
+set -x GIT_SSH git-ssh
 
 # Use vim as the default editor
 if type vim 1>/dev/null

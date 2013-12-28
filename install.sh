@@ -25,12 +25,34 @@ mkdir -p $HOME/local/inst
 mkdir -p $HOME/local/tmp
 mkdir -p $HOME/.config
 
-load $HOME/local/bin/tmux-default-command.sh $DOTDIR/bin/tmux-default-command.sh
+load $HOME/local/bin/tmux-default-command $DOTDIR/bin/tmux-default-command
 load $HOME/.tmux.conf $DOTDIR/tmux.conf
 load $HOME/.vimrc $DOTDIR/vimrc
 load $HOME/.vim $DOTDIR/vim
 load $HOME/.config/fish $DOTDIR/fish
 load $HOME/.ackrc $DOTDIR/ackrc
-load $HOME/.gitconfig $DOTDIR/gitconfig
+
+
+gitconfig=$gitconfig"[include]\n  path = $DOTDIR/gitconfig"
+if [ -e $HOME/.gitconfig ]; then
+  if ! grep -F "path = $DOTDIR/gitconfig" $HOME/.gitconfig; then
+    echo -e $gitconfig >> $HOME/.gitconfig
+  fi
+else
+  echo -e $gitconfig > $HOME/.gitconfig
+fi
+
 load $HOME/.gitignore $DOTDIR/gitignore
 
+echo "Loading submodules"
+git submodule update --init
+
+echo "Making vimproc"
+cd vim/bundle/vimproc.vim
+if [ "$(uname)" == "Darwin" ]; then
+  make -f make_mac.mak
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  make -f make_unix.mak
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+  make -f make_cygwin.mak
+fi
