@@ -32,10 +32,19 @@ load $HOME/.vim $DOTDIR/vim
 load $HOME/.config/fish $DOTDIR/fish
 load $HOME/.ackrc $DOTDIR/ackrc
 
+# Conditionally add DOTDIR/bin to PATH
+if [ -e $HOME/.bashrc ]; then
+  if ! grep -q "$DOTDIR/bin" $HOME/.bashrc; then
+    echo 'export PATH='$DOTDIR/bin':$PATH' >> $HOME/.bashrc
+  fi
+else
+  echo 'export PATH='$DOTDIR/bin':$PATH' > $HOME/.bashrc
+fi
 
+# Conditionally add gitconfig
 gitconfig=$gitconfig"[include]\n  path = $DOTDIR/gitconfig"
 if [ -e $HOME/.gitconfig ]; then
-  if ! grep -F "path = $DOTDIR/gitconfig" $HOME/.gitconfig; then
+  if ! grep -q "path = $DOTDIR/gitconfig" $HOME/.gitconfig; then
     echo -e $gitconfig >> $HOME/.gitconfig
   fi
 else
