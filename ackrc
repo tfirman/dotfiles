@@ -5,6 +5,8 @@ coffee=.coffee
 --type-set
 sass=.scss
 --type-set
+yaml=.yml
+--type-set
 feature=.feature
 --type-set
 handlebars=.handlebars,.hbs
