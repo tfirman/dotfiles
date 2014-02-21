@@ -1,4 +1,11 @@
-fish/fish_history
-fish/generated_completions
-fish/fishd.*
-vim/.netrwhist
+# Ignore ide folders
+.idea
+
+# Ignore fish generations
+/fish/fish_history
+/fish/generated_completions
+/fish/fishd.*
+
+# Ignore vim generations
+/vim/.netrwhist
+
