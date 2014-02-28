@@ -26,6 +26,14 @@ if test -d $HOME/local/inst/nimrod
   set PATH $HOME/local/inst/nimrod/bin $PATH
 end
 
+# Babel bin
+if test -d $HOME/.babel/bin
+  set PATH $HOME/.babel/bin $PATH
+end
+
+# Android
+set -x ANDROID_HOME /usr/local/opt/android-sdk
+
 ################################################################################
 # Make flags
 set CPPFLAGS '-I$HOME/local/include'

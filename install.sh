@@ -25,17 +25,39 @@ mkdir -p $HOME/local/inst
 mkdir -p $HOME/local/tmp
 mkdir -p $HOME/.config
 
-load $HOME/local/bin/tmux-default-command $DOTDIR/bin/tmux-default-command
 load $HOME/.tmux.conf $DOTDIR/tmux.conf
 load $HOME/.vimrc $DOTDIR/vimrc
 load $HOME/.vim $DOTDIR/vim
 load $HOME/.config/fish $DOTDIR/fish
 load $HOME/.ackrc $DOTDIR/ackrc
 
+# Include ~/.bashrc in ~/.bash_profile
+bashrc_include='[[ -s ~/.bashrc ]] && source ~/.bashrc'
+if [ -e $HOME/.bash_profile ]; then
+  if ! grep -q 'source ~/.bashrc' $HOME/.bash_profile; then
+    echo "~/.bash_profile: adding include to ~/.bashrc"
+    echo $bashrc_include >> $HOME/.bash_profile
+  else
+    echo "~/.bash_profile: already includes ~/.bashrc"
+  fi
+else
+  echo "~/.bash_profile: adding file to include ~/.bashrc"
+  echo $bashrc_include >> $HOME/.bash_profile
+fi
 
+# Conditionally add DOTDIR/bin to PATH
+if [ -e $HOME/.bashrc ]; then
+  if ! grep -q "$DOTDIR/bin" $HOME/.bashrc; then
+    echo 'export PATH='$DOTDIR/bin':$PATH' >> $HOME/.bashrc
+  fi
+else
+  echo 'export PATH='$DOTDIR/bin':$PATH' > $HOME/.bashrc
+fi
+
+# Conditionally add gitconfig
 gitconfig=$gitconfig"[include]\n  path = $DOTDIR/gitconfig"
 if [ -e $HOME/.gitconfig ]; then
-  if ! grep -F "path = $DOTDIR/gitconfig" $HOME/.gitconfig; then
+  if ! grep -q "path = $DOTDIR/gitconfig" $HOME/.gitconfig; then
     echo -e $gitconfig >> $HOME/.gitconfig
   fi
 else
