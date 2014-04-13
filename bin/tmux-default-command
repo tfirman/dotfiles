@@ -6,7 +6,7 @@ if hash reattach-to-user-namespace 2>/dev/null; then
 fi
 
 if hash zsh 2>/dev/null; then
-  CMD=$CMD'zsh'
+  CMD=$CMD'fish'
 else
   CMD=$CMD'bash'
 fi

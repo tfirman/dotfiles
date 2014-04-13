@@ -14,6 +14,14 @@ if test -d $HOME/.cabal/bin
   set PATH $HOME/.cabal/bin $PATH
 end
 
+# Go
+if test -d $HOME/local/inst/go
+  set -x GOROOT $HOME/local/inst/go
+  set -x GOPATH $HOME/local/share/go
+  mkdir -p $GOPATH
+  set PATH $GOPATH/bin $GOROOT/bin $PATH
+end
+
 # Rbenv bin
 if test -d $HOME/.rbenv
   set PATH $HOME/.rbenv/bin $PATH
