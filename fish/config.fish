@@ -15,8 +15,8 @@ if test -d $HOME/.cabal/bin
 end
 
 # Go
-if test -d $HOME/local/inst/go
-  set -x GOROOT $HOME/local/inst/go
+if test -d /usr/local/opt/go/libexec
+  set -x GOROOT /usr/local/opt/go/libexec
   set -x GOPATH $HOME/local/share/go
   mkdir -p $GOPATH
   set PATH $GOPATH/bin $GOROOT/bin $PATH
@@ -42,6 +42,9 @@ end
 # Android
 set -x ANDROID_HOME /usr/local/opt/android-sdk
 
+# Scala sbt opts
+set -x SBT_OPTS "-Xms512M -Xmx2G -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+
 ################################################################################
 # Make flags
 set CPPFLAGS '-I$HOME/local/include'
@@ -57,9 +60,6 @@ set -x GIT_SSH git-ssh
 if type vim 1>/dev/null
   set -x EDITOR 'vim'
 end
-
-# Scala sbt opts
-set -x SBT_OPTS "-Xms512M -Xmx2G -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 
 ################################################################################
 # Aliases
