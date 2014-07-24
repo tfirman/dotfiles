@@ -64,6 +64,7 @@ end
 ################################################################################
 # Aliases
 
+alias g "git"
 alias r "rails"
 alias z "zeus"
 alias b "bundle exec"
