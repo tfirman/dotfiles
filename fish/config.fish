@@ -64,6 +64,7 @@ set -x SBT_OPTS "-Xms512M -Xmx2G -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPer
 ################################################################################
 # Aliases
 
+alias r "rails"
 alias z "zeus"
 alias b "bundle exec"
 
