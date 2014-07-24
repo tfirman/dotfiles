@@ -41,3 +41,6 @@ if executable('ag')
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
 endif
+
+" Disable vim-go autoinstall. Not everybody is a go developer
+let g:go_disable_autoinstall = 1
