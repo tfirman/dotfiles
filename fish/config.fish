@@ -88,5 +88,7 @@ end
 alias g "git"
 alias r "rails"
 alias z "zeus"
+alias s "spring"
+alias sr "spring rails"
 alias b "bundle exec"
 
