@@ -1,3 +1,10 @@
+# CD Helper
+function cd --description "Change working directory"
+  builtin cd $argv
+  emit cwd
+end
+
+
 ################################################################################
 # PATHS
 
@@ -17,9 +24,23 @@ end
 # Go
 if test -d /usr/local/opt/go/libexec
   set -x GOROOT /usr/local/opt/go/libexec
-  set -x GOPATH $HOME/local/share/go
   mkdir -p $GOPATH
   set PATH $GOPATH/bin $GOROOT/bin $PATH
+
+  function __check_go_path_on_cwd --on-event cwd
+    set DIR (pwd)
+    while not test -f $DIR/.gopath
+      if test $DIR = /
+        break
+      end 
+      set DIR (dirname $DIR)
+    end
+
+    if test -f $DIR/.gopath
+      echo "GOPATH: $DIR"
+      set -gx GOPATH $DIR
+    end
+  end
 end
 
 # Rbenv bin

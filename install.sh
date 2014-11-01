@@ -30,8 +30,6 @@ load $HOME/.vimrc $DOTDIR/vimrc
 load $HOME/.vim $DOTDIR/vim
 load $HOME/.config/fish $DOTDIR/fish
 load $HOME/.ackrc $DOTDIR/ackrc
-load $HOME/.zshrc $DOTDIR/zshrc
-load $HOME/.zsh $DOTDIR/zsh
 
 # Include ~/.bashrc in ~/.bash_profile
 bashrc_include='[[ -s ~/.bashrc ]] && source ~/.bashrc'
