@@ -85,7 +85,10 @@ end
 ################################################################################
 # Aliases
 
+# Git aliases
 alias g "git"
+
+# Ruby aliases
 alias r "rails"
 alias z "zeus"
 alias s "spring"

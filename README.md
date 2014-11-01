@@ -6,13 +6,13 @@ Here is a simple set of configuration files for OSX.
 Requirements
 --------
 
-vim, fish, git, ack, tmux
+vim, fish, git, ag, tmux
 
 OSX install
 --------
 
     # Install dependencies
-    brew install vim fish git ack tmux
+    brew install vim fish git the_silver_searcher tmux
 
     # Setup fish
     sudo 'echo /usr/local/bin/fish >> /etc/shells'
