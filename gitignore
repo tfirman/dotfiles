@@ -1,5 +1,6 @@
 # Ignore ide folders
 .idea
+*.iml
 
 # Ignore fish generations
 /fish/fish_history
