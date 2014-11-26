@@ -23,5 +23,6 @@ OSX install
     cd ~/local/src
     git clone git@github.com/Nthalk/dotfiles
     cd dotfiles
+    git submodule update --init
     sh install.sh
 
