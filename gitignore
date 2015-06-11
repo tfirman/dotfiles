@@ -1,13 +1,13 @@
-# Ignore ide folders
+# Intellij generated files
 .idea
 *.iml
+/atlassian-ide-plugin.xml
 
-# Ignore fish generations
+# OSX generated files
+.DS_Store
+
+# Fish generation files
 /fish/fish_history
 /fish/generated_completions
 /fish/fishd.*
 
-# Ignore vim generations
-/vim/.netrwhist
-
-/*.iml
