@@ -46,8 +46,22 @@ end
 # Rbenv bin
 if test -d $HOME/.rbenv
   set PATH $HOME/.rbenv/bin $PATH
-  set PATH $HOME/.rbenv/shims $PATH
   set PATH ./bin $PATH
+  setenv PATH '/Users/ctaylor/.rbenv/shims' $PATH
+  setenv RBENV_SHELL fish
+  . '/usr/local/Cellar/rbenv/HEAD/libexec/../completions/rbenv.fish'
+  rbenv rehash 2>/dev/null
+  function rbenv
+    set command $argv[1]
+    set -e argv[1]
+
+    switch "$command"
+    case rehash shell
+      eval (rbenv "sh-$command" $argv)
+    case '*'
+      command rbenv "$command" $argv
+    end
+  end
 end
 
 # Nimrod bin
