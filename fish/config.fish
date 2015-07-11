@@ -109,3 +109,7 @@ alias s "spring"
 alias sr "spring rails"
 alias b "bundle exec"
 
+if test -f .config/fish/custom.fish
+  source .config/fish/custom.fish
+end
+
