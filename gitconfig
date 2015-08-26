@@ -12,7 +12,7 @@
 [alias]
   # workflow
   branch-name = "!git rev-parse --abbrev-ref HEAD"
-  publish = "!git push -u origin $(git branch-name)"
+  publish = "!git push -u origin HEAD"
   unpublish = "!git push origin :$(git branch-name)"
   code-review = difftool origin/master...
   rebase-branch = "!git rebase -i `git merge-base master HEAD`"
