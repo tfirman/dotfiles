@@ -11,6 +11,7 @@
   excludesfile = ~/.gitignore
 [alias]
   # workflow
+  master = "!git checkout master"
   branch-name = "!git rev-parse --abbrev-ref HEAD"
   publish = "!git push -u origin HEAD"
   unpublish = "!git push origin :$(git branch-name)"
