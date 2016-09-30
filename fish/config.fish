@@ -21,59 +21,6 @@ if test -d $HOME/.cabal/bin
   set PATH $HOME/.cabal/bin $PATH
 end
 
-# Go
-if test -d /usr/local/opt/go/libexec
-  set -x GOROOT /usr/local/opt/go/libexec
-  mkdir -p $GOPATH
-  set PATH $GOPATH/bin $GOROOT/bin $PATH
-
-  function __check_go_path_on_cwd --on-event cwd
-    set DIR (pwd)
-    while not test -f $DIR/.gopath
-      if test $DIR = /
-        break
-      end 
-      set DIR (dirname $DIR)
-    end
-
-    if test -f $DIR/.gopath
-      echo "GOPATH: $DIR"
-      set -gx GOPATH $DIR
-    end
-  end
-end
-
-# Rbenv bin
-if test -d $HOME/.rbenv
-  set PATH $HOME/.rbenv/bin $PATH
-  set PATH ./bin $PATH
-  setenv PATH '/Users/ctaylor/.rbenv/shims' $PATH
-  setenv RBENV_SHELL fish
-  . '/usr/local/Cellar/rbenv/HEAD/libexec/../completions/rbenv.fish'
-  rbenv rehash 2>/dev/null
-  function rbenv
-    set command $argv[1]
-    set -e argv[1]
-
-    switch "$command"
-    case rehash shell
-      eval (rbenv "sh-$command" $argv)
-    case '*'
-      command rbenv "$command" $argv
-    end
-  end
-end
-
-# Nimrod bin
-if test -d $HOME/local/inst/nimrod
-  set PATH $HOME/local/inst/nimrod/bin $PATH
-end
-
-# Babel bin
-if test -d $HOME/.babel/bin
-  set PATH $HOME/.babel/bin $PATH
-end
-
 # Android
 set -x ANDROID_HOME /usr/local/opt/android-sdk
 
@@ -101,13 +48,6 @@ end
 
 # Git aliases
 alias g "git"
-
-# Ruby aliases
-alias r "rails"
-alias z "zeus"
-alias s "spring"
-alias sr "spring rails"
-alias b "bundle exec"
 
 if test -f .config/fish/custom.fish
   source .config/fish/custom.fish
