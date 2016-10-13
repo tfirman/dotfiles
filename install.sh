@@ -27,6 +27,7 @@ mkdir -p $HOME/.config
 
 load $HOME/.tmux.conf $DOTDIR/tmux.conf
 load $HOME/.vimrc $DOTDIR/vimrc
+load $HOME/.emacs $DOTDIR/emacs
 load $HOME/.vim $DOTDIR/vim
 load $HOME/.config/fish $DOTDIR/fish
 load $HOME/.ackrc $DOTDIR/ackrc

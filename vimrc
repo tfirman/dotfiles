@@ -1,5 +1,8 @@
 set shell=sh
 
+let g:pathogen_disabled = []
+call add(g:pathogen_disabled, 'netrw')
+
 execute pathogen#infect()
 
 set backupdir=$HOME/local/tmp

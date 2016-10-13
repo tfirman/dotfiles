@@ -16,11 +16,6 @@ set PATH $HOME/local/bin $PATH
 set PATH /usr/local/sbin $PATH
 set PATH /usr/local/bin $PATH
 
-# Haskell bin
-if test -d $HOME/.cabal/bin
-  set PATH $HOME/.cabal/bin $PATH
-end
-
 # Android
 set -x ANDROID_HOME /usr/local/opt/android-sdk
 
