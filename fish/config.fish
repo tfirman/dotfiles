@@ -18,6 +18,7 @@ set PATH /usr/local/bin $PATH
 
 # Android
 set -x ANDROID_HOME /usr/local/opt/android-sdk
+set -x ANDROID_NDK_HOME /usr/local/opt/android-ndk
 
 # Scala sbt opts
 set -x SBT_OPTS "-Xms512M -Xmx2G -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
