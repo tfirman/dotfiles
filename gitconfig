@@ -4,7 +4,7 @@
   enabled = 1
   autoupdate = 1
 [push]
-  default = matching
+  default = simple
 [core]
   editor = vim
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol

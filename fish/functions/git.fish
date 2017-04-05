@@ -13,6 +13,7 @@ abbr gl 'git log'
 abbr gco 'git checkout'
 abbr gc 'git commit'
 abbr gps 'git push'
+abbr gcp 'git cherry-pick'
 
 abbr mvnresolve 'mvn -q org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression='
 
