@@ -40,10 +40,35 @@ if type vim 1>/dev/null
 end
 
 ################################################################################
-# Aliases
+# abbreviations
 
-# Git aliases
-alias g "git"
+# Git
+abbr g "git"
+abbr g 'git'
+abbr gpr 'git pull-request'
+abbr gcm 'git checkout master'
+abbr gp 'git pull'
+abbr gcb 'git checkout -b'
+abbr gb 'git branch'
+abbr gd 'git diff'
+abbr gs 'git status'
+abbr gst 'git stash'
+abbr gr 'git rebase'
+abbr ga 'git add'
+abbr gl 'git log'
+abbr gco 'git checkout'
+abbr gc 'git commit'
+abbr gps 'git push'
+abbr gcp 'git cherry-pick'
+
+# ls
+abbr l ls
+
+# Android
+abbr droid 'adb shell input text'
+
+# Maven
+abbr mvn-resolve 'mvn -q org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression='
 
 if test -f .config/fish/custom.fish
   source .config/fish/custom.fish
