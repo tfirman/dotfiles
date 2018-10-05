@@ -1,49 +1,63 @@
-set shell=sh
+"
+" A (not so) minimal vimrc.
+"
 
-let g:pathogen_disabled = []
-call add(g:pathogen_disabled, 'netrw')
+" You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
+" We set it explicitely to make our position clear!
+set nocompatible
 
-execute pathogen#infect()
+filetype plugin indent on  " Load plugins according to detected filetype.
+syntax on                  " Enable syntax highlighting.
 
-set backupdir=$HOME/local/tmp
+set autoindent             " Indent according to previous line.
+set expandtab              " Use spaces instead of tabs.
+set softtabstop =4         " Tab key indents by 4 spaces.
+set shiftwidth  =4         " >> indents by 4 spaces.
+set shiftround             " >> indents to next multiple of 'shiftwidth'.
 
-syntax on
-filetype plugin indent on
+set backspace   =indent,eol,start  " Make backspace work as you would expect.
+set hidden                 " Switch between buffers without having to save first.
+set laststatus  =2         " Always show statusline.
+set display     =lastline  " Show as much as possible of the last line.
 
-set tabstop=2
-set shiftwidth=2
-set expandtab
+set showmode               " Show current mode in command-line.
+set showcmd                " Show already typed keys when more are expected.
 
-vmap <C-x> :!pbcopy<CR>  
-vmap <C-c> :w !pbcopy<CR><CR> 
+set incsearch              " Highlight while searching with / or ?.
+set hlsearch               " Keep matches highlighted.
 
-nnoremap <C-f> :Unite grep:.<cr>
-nnoremap <C-k> :Unite -quick-match buffer<cr>
-nnoremap <C-p> :Unite file_rec/async<cr>
+set ttyfast                " Faster redrawing.
+set lazyredraw             " Only redraw when necessary.
 
-" Start insert.
-let g:unite_enable_start_insert = 1
-let g:unite_enable_short_source_names = 1
+set splitbelow             " Open new windows below the current window.
+set splitright             " Open new windows right of the current window.
 
-" To track long mru history.
-let g:unite_source_file_mru_long_limit = 3000
-let g:unite_source_directory_mru_long_limit = 3000
+set cursorline             " Find the current line quickly.
+set wrapscan               " Searches wrap around end-of-file.
+set report      =0         " Always report changed lines.
+set synmaxcol   =200       " Only highlight the first 200 columns.
 
-" Like ctrlp.vim settings.
-let g:unite_enable_start_insert = 1
-let g:unite_winheight = 10
-let g:unite_split_rule = 'botright'
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-" Prompt choices.
-let g:unite_prompt = '» '
-
-" Use ag for search
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-  let g:unite_source_grep_recursive_opt = ''
+set list                   " Show non-printable characters.
+if has('multi_byte') && &encoding ==# 'utf-8'
+  let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
+else
+  let &listchars = 'tab:> ,extends:>,precedes:<,nbsp:.'
 endif
 
-" Disable vim-go autoinstall. Not everybody is a go developer
-let g:go_disable_autoinstall = 1
+" The fish shell is not very compatible to other shells and unexpectedly
+" breaks things that use 'shell'.
+if &shell =~# 'fish$'
+  set shell=/bin/bash
+endif
+
+" Put all temporary files under the same directory.
+" https://github.com/mhinz/vim-galore#handling-backup-swap-undo-and-viminfo-files
+set backup
+set backupdir   =$HOME/.vim/files/backup
+set backupext   =-vimbackup
+set backupskip  =
+set directory   =$HOME/.vim/files/swap
+set updatecount =100
+set undofile
+set undodir     =$HOME/.vim/files/undo
+set viminfo     ='100,n$HOME/.vim/viminfo

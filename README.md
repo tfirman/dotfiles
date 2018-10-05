@@ -3,11 +3,6 @@ dotfiles
 
 Here is a simple set of configuration files for OSX.
 
-Requirements
---------
-
-vim, fish, git, ag, tmux
-
 OSX install
 --------
 
@@ -22,7 +17,5 @@ OSX install
     mkdir -p ~/local/src
     cd ~/local/src
     git clone git@github.com/Nthalk/dotfiles
-    cd dotfiles
-    git submodule update --init
-    sh install.sh
+    ./install.sh
 

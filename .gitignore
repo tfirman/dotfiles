@@ -3,3 +3,5 @@ fish/generated_completions
 fish/fish_history
 vim/.netrwhist
 fish/custom.fish
+vim/files
+vim/viminfo

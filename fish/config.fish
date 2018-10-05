@@ -8,6 +8,11 @@ end
 ################################################################################
 # PATHS
 
+# PWD bin
+set PATH ./bin $PATH
+set PATH ./node_modules/.bin/ $PATH
+set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
+
 # Dotfiles bin
 set PATH (dirname (status -f))"/../bin" $PATH
 set PATH $HOME/local/bin $PATH

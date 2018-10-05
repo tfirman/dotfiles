@@ -30,7 +30,7 @@ load $HOME/.vimrc $DOTDIR/vimrc
 load $HOME/.emacs $DOTDIR/emacs
 load $HOME/.vim $DOTDIR/vim
 load $HOME/.config/fish $DOTDIR/fish
-load $HOME/.ackrc $DOTDIR/ackrc
+
 
 # Include ~/.bashrc in ~/.bash_profile
 bashrc_include='[[ -s ~/.bashrc ]] && source ~/.bashrc'
@@ -66,16 +66,3 @@ else
 fi
 
 load $HOME/.gitignore $DOTDIR/gitignore
-
-echo "Loading submodules"
-git submodule update --init
-
-echo "Making vimproc"
-cd vim/bundle/vimproc.vim
-if [ "$(uname)" == "Darwin" ]; then
-  make -f make_mac.mak
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  make -f make_unix.mak
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
-  make -f make_cygwin.mak
-fi
