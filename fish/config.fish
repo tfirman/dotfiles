@@ -11,7 +11,11 @@ end
 # PWD bin
 set PATH ./bin $PATH
 set PATH ./node_modules/.bin/ $PATH
-set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
+
+# Fulcrum tools
+if test -d "$HOME/local/src/fulcrum/dev-tools/bin"
+  set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
+end
 
 # Dotfiles bin
 set PATH (dirname (status -f))"/../bin" $PATH
@@ -23,7 +27,14 @@ set PATH /usr/local/bin $PATH
 
 # Android
 set -x ANDROID_HOME /usr/local/share/android-sdk
+if test -d "$ANDROID_HOME/tools/bin"
+  set PATH "$ANDROID_HOME/tools/bin" $PATH
+end
+
 set -x ANDROID_NDK_HOME /usr/local/share/android-ndk
+if test -d "$ANDROID_NDK_HOME/tools/bin"
+  set PATH "$ANDROID_NDK_HOME/tools/bin" $PATH
+end
 
 # Scala sbt opts
 set -x SBT_OPTS "-Xms512M -Xmx2G -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
