@@ -29,11 +29,12 @@ set PATH /usr/local/bin $PATH
 set -x ANDROID_HOME /usr/local/share/android-sdk
 if test -d "$ANDROID_HOME/tools/bin"
   set PATH "$ANDROID_HOME/tools/bin" $PATH
+  set PATH "$ANDROID_HOME/platform-tools" $PATH
 end
 
-set -x ANDROID_NDK_HOME /usr/local/share/android-ndk
-if test -d "$ANDROID_NDK_HOME/tools/bin"
-  set PATH "$ANDROID_NDK_HOME/tools/bin" $PATH
+set -x ANDROID_NDK_HOME /usr/local/share/android-sdk/ndk-bundle
+if test -d "$ANDROID_NDK_HOME"
+  set PATH "$ANDROID_NDK_HOME" $PATH
 end
 
 # Scala sbt opts
