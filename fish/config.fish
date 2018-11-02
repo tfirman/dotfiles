@@ -22,8 +22,13 @@ set PATH (dirname (status -f))"/../bin" $PATH
 set PATH $HOME/local/bin $PATH
 
 # Homebrew bin
-set PATH /usr/local/sbin $PATH
-set PATH /usr/local/bin $PATH
+if test -d /usr/local/sbin
+  set PATH /usr/local/sbin $PATH
+end
+
+if test -d /usr/local/bin
+  set PATH /usr/local/bin $PATH
+end
 
 # Android
 set -x ANDROID_HOME /usr/local/share/android-sdk
@@ -32,7 +37,7 @@ if test -d "$ANDROID_HOME/tools/bin"
   set PATH "$ANDROID_HOME/platform-tools" $PATH
 end
 
-set -x ANDROID_NDK_HOME /usr/local/share/android-sdk/ndk-bundle
+set -x ANDROID_NDK_HOME /usr/local/share/android-ndk
 if test -d "$ANDROID_NDK_HOME"
   set PATH "$ANDROID_NDK_HOME" $PATH
 end
