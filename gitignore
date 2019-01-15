@@ -3,6 +3,10 @@
 *.iml
 /atlassian-ide-plugin.xml
 
+# Jrebel generated files
+.rebel*
+rebel*
+
 # OSX generated files
 .DS_Store
 

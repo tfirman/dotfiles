@@ -4,9 +4,31 @@ function cd --description "Change working directory"
   emit cwd
 end
 
+# Remove Duplicates From Path
+function varclear --description 'Remove duplicates from environment variable'
+    if test (count $argv) = 1
+        set -l newvar
+        set -l count 0
+        for v in $$argv
+            if contains -- $v $newvar
+                set count (math $count+1)
+            else
+                set newvar $newvar $v
+            end
+        end
+        set $argv $newvar
+        test $count -gt 0
+        and echo Removed $count duplicates from $argv
+    else
+        for a in $argv
+            varclear $a
+        end
+    end
+end
+
 
 ################################################################################
-# PATHS
+# Environment variables
 
 # PWD bin
 set PATH ./bin $PATH
@@ -15,6 +37,10 @@ set PATH ./node_modules/.bin/ $PATH
 # Fulcrum tools
 if test -d "$HOME/local/src/fulcrum/dev-tools/bin"
   set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
+end
+if test -d "$HOME/local/src/fulcrum/vm/bin"
+  set PATH $HOME/local/src/fulcrum/vm/bin $PATH
+  set -x VAGRANT_CWD $HOME/local/src/fulcrum/vm
 end
 
 # Dotfiles bin
@@ -31,7 +57,7 @@ if test -d /usr/local/bin
 end
 
 # Android
-set -x ANDROID_HOME /usr/local/share/android-sdk
+set -x ANDROID_HOME ~/Library/Android/sdk
 if test -d "$ANDROID_HOME/tools/bin"
   set PATH "$ANDROID_HOME/tools/bin" $PATH
   set PATH "$ANDROID_HOME/platform-tools" $PATH
@@ -42,8 +68,25 @@ if test -d "$ANDROID_NDK_HOME"
   set PATH "$ANDROID_NDK_HOME" $PATH
 end
 
+set -x GIT_SSH git-ssh
+
 # Scala sbt opts
 set -x SBT_OPTS "-Xms512M -Xmx2G -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+
+# GOPATH
+#set -x GOPATH ~/local/src/twick00/go
+
+# Gradle
+#set -x GRADLE_HOME /usr/local/bin
+
+# PATHS
+#set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
+#set PATH $HOME/.cargo/bin $PATH
+#set PATH $HOME/Library/Android/sdk/platform-tools $PATH
+#set PATH $HOME/go/bin $PATH
+
+# Clear extra PATH variables
+varclear PATH
 
 ################################################################################
 # Make flags
@@ -52,9 +95,7 @@ set CFLAGS '-I$HOME/local/include'
 set LDFLAGS '-L$HOME/local/lib'
 
 ################################################################################
-# Environment variables
-
-set -x GIT_SSH git-ssh
+# Misc.
 
 # Use vim as the default editor
 if type vim 1>/dev/null
@@ -92,7 +133,11 @@ abbr droid 'adb shell input text'
 # Maven
 abbr mvn-resolve 'mvn -q org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression='
 
-if test -f .config/fish/custom.fish
-  source .config/fish/custom.fish
-end
+# Misc. Productivity
+abbr work 'cd ~/local/src/'
+abbr port 'lsof -i tcp:'
+abbr ip 'ifconfig | grep "inet " | grep -v 127.0.0.1'
 
+if test -f ~/.config/fish/custom.fish
+  source ~/.config/fish/custom.fish
+end
