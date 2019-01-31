@@ -34,8 +34,6 @@ end
 ################################################################################
 # Environment variables / Path
 
-set -x JIRA_API_TOKEN ***REMOVED***
-
 # PWD bin
 addPath ./bin
 addPath ./node_modules/.bin
