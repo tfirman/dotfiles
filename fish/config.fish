@@ -34,9 +34,14 @@ end
 ################################################################################
 # Environment variables / Path
 
+set -x JIRA_API_TOKEN ***REMOVED***
+
 # PWD bin
 addPath ./bin
 addPath ./node_modules/.bin
+
+addPath "$HOME/local/src/fulcrum/dev-tools/bin"
+addPath "$HOME/local/src/fulcrum/vm/bin"
 
 # Dotfiles bin
 addPath (dirname (status -f))"/../bin"
