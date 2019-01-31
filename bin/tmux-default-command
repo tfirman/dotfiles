@@ -2,7 +2,7 @@
 CMD='bash'
 
 if hash fish 2>/dev/null; then
-  CMD=$CMD' -c fish'
+  CMD="fish"
 fi
 
 $CMD
