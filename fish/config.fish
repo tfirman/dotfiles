@@ -7,7 +7,6 @@ function cd --description "Change working directory"
   emit cwd
 end
 
-# Add path if it's not there
 function addPath --description 'Add path if it exists and is not already in PATH, also sets an ENV variable with a second param'
   set -l dir $argv[1]
   set -l key $argv[2]
@@ -18,6 +17,16 @@ function addPath --description 'Add path if it exists and is not already in PATH
     end
     if not contains $dir $PATH
       set PATH $PATH $dir
+    end
+  end
+end
+
+function setFirstAvailablePath --description 'Set a variable to the first available path if it exists'
+  set -l key $argv[1]
+  for i in $argv[2..-1]
+    set -l dir "$i"
+    if not test -z "$key"
+      set $key $dir
     end
   end
 end
@@ -38,12 +47,9 @@ addPath /usr/local/sbin
 addPath /usr/local/bin
 
 # Android
-
-if test -d "$HOME/Library/Android/sdk"
-  set -x ANDROID_HOME ~/Library/Android/sdk
-  addPath "$ANDROID_HOME/tools/bin"
-  addPath "$ANDROID_HOME/platform-tools"
-end
+setFirstAvailablePath ANDROID_HOME $HOME/Library/Android/sdk /usr/local/share/android-sdk
+addPath "$ANDROID_HOME/tools/bin"
+addPath "$ANDROID_HOME/platform-tools"
 
 addPath /usr/local/share/android-ndk ANDROID_NDK_HOME
 
